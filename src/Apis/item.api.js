@@ -2,17 +2,8 @@ module.exports = (() => {
     const express = require('express');
     const itemService = require('../Services/item.service.js');
     const router = express.Router();
-    
-    router.options('', (req, res, next)=>{
-        res.setHeader("Access-Control-Allow-Origin", "*");
-        res.setHeader('Access-Control-Allow-Methods', '*');
-        res.setHeader("Access-Control-Allow-Headers", "*");
-    });
 
     router.get('/', (req, res, next) => {
-        // res.setHeader("Access-Control-Allow-Origin", "*");
-        // res.setHeader('Access-Control-Allow-Methods', '*');
-        // res.setHeader("Access-Control-Allow-Headers", "*");
         itemService.getAllItems().then((items) => {
             items = items.map((item) => {
                 const id = item._id;
